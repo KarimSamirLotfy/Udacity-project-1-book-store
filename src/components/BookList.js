@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import * as BooksAPI from './BooksAPI'
 import "../App.css";
 import { getAll, update } from "../BooksAPI";
@@ -28,7 +29,8 @@ class BookList extends React.Component {
 
   render() {
     const { books } = this.state;
-    return <div className="list-books">
+    return (
+      <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
@@ -40,12 +42,17 @@ class BookList extends React.Component {
                 <ol className="books-grid">
                   {books
                     .filter((book) => book.shelf == "currentlyReading")
-                    .map((book) => <li key={book["id"]}>
-                        <Book handelShelfChange={(new_shelf) => {
+                    .map((book) => (
+                      <li key={book["id"]}>
+                        <Book
+                          handelShelfChange={(new_shelf) => {
                             console.log("from book");
                             this.handelShelfChange(book["id"], new_shelf);
-                          }} info={book} />
-                      </li>)}
+                          }}
+                          info={book}
+                        />
+                      </li>
+                    ))}
                 </ol>
               </div>
             </div>
@@ -55,12 +62,17 @@ class BookList extends React.Component {
                 <ol className="books-grid">
                   {books
                     .filter((book) => book.shelf == "wantToRead")
-                    .map((book) => <li key={book["id"]}>
-                        <Book handelShelfChange={(new_shelf) => {
+                    .map((book) => (
+                      <li key={book["id"]}>
+                        <Book
+                          handelShelfChange={(new_shelf) => {
                             console.log("from book");
                             this.handelShelfChange(book["id"], new_shelf);
-                          }} info={book} />
-                      </li>)}
+                          }}
+                          info={book}
+                        />
+                      </li>
+                    ))}
                 </ol>
               </div>
             </div>
@@ -70,23 +82,31 @@ class BookList extends React.Component {
                 <ol className="books-grid">
                   {books
                     .filter((book) => book.shelf == "read")
-                    .map((book) => <li key={book["id"]}>
-                        <Book handelShelfChange={(new_shelf) => {
+                    .map((book) => (
+                      <li key={book["id"]}>
+                        <Book
+                          handelShelfChange={(new_shelf) => {
                             console.log("from book");
                             this.handelShelfChange(book["id"], new_shelf);
-                          }} info={book} />
-                      </li>)}
+                          }}
+                          info={book}
+                        />
+                      </li>
+                    ))}
                 </ol>
               </div>
             </div>
           </div>
         </div>
         <div className="open-search">
-          <button onClick={() => this.setState({ showSearchPage: true })}>
-            Add a book
-          </button>
+          <Link
+            className="open-search"
+            activeClassName="is-active"
+            to="/search"
+          />
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 

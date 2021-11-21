@@ -1,0 +1,17 @@
+import React, { useState } from "react";
+const Shelf = (props) => {
+  const [shelf, setShelf] = useState("None");
+  const {handelShelfChange} = props;
+  
+  return (
+    <select value={shelf} onChange={handleSelectChange}>
+      <option name="shelf">Move to...</option>
+      <option value="currentlyReading">Currently Reading</option>
+      <option value="wantToRead">Want to Read</option>
+      <option value="read">Read</option>
+      <option value="none">None</option>
+    </select>
+  );
+};
+
+export default Shelf;

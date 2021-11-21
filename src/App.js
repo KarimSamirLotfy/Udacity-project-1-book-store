@@ -4,6 +4,7 @@ import React from "react";
 import "./App.css";
 import BookList from "./components/BookList";
 import SearchPage from "./components/SearchPage";
+import { BrowserRouter, Route, Link, Routes, Router, Layout } from "react-router-dom";
 class BooksApp extends React.Component {
   state = {
     /**
@@ -16,11 +17,14 @@ class BooksApp extends React.Component {
   };
 
   render() {
-    return (
-      <div className="app">
-        {this.state.showSearchPage ? <SearchPage /> : <BookList />}
-      </div>
-    );
+    return <div className="app">
+            <Routes>
+              <Route path="/" element={<BookList/>} exact/>
+              <Route path="/search" element={<SearchPage/>} />
+            </Routes>
+
+        {/* {this.state.showSearchPage ? <SearchPage /> : <BookList />} */}
+      </div>;
   }
 }
 
