@@ -1,17 +1,37 @@
 import React, { useState } from "react";
-const Shelf = (props) => {
-  const [shelf, setShelf] = useState("None");
-  const {handelShelfChange} = props;
-  
+
+function Shelf(props) {
+  // Declare a new state variable, which we'll call "count"
+    const { handelShelfChange } = props;
+    const { current_shelf } = props;
+  // state of the shelf
+  const [shelf, setShelf] = useState(current_shelf);
+
+  function handleSelectChange(shelf) {
+    setShelf(shelf);
+    //console.log(`handerSehlfChange is a ${props.handelShelfChange}`);
+    handelShelfChange(shelf);
+  }
   return (
-    <select value={shelf} onChange={handleSelectChange}>
-      <option name="shelf">Move to...</option>
-      <option value="currentlyReading">Currently Reading</option>
-      <option value="wantToRead">Want to Read</option>
-      <option value="read">Read</option>
-      <option value="none">None</option>
-    </select>
+    <div>
+      <select
+        value={current_shelf}
+        onChange={(event) => {
+          console.log("shelf changed" + event.target.value);
+          handleSelectChange(event.target.value);
+          setShelf(event.target.value);
+        }}
+      >
+        <option name="shelf">Move to...</option>
+        {console.log(current_shelf == "currentlyReading")}
+
+        <option value="currentlyReading">Currently Reading</option>
+        <option value="wantToRead">Want to Read</option>
+        <option value="read">Read</option>
+        <option value="None">None</option>
+      </select>
+    </div>
   );
-};
+}
 
 export default Shelf;
