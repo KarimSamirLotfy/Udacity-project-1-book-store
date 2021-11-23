@@ -15,7 +15,7 @@ function Shelf(props) {
   return (
     <div>
       <select
-        value={current_shelf}
+        value={shelf}
         onChange={(event) => {
           console.log("shelf changed" + event.target.value);
           handleSelectChange(event.target.value);
@@ -23,12 +23,10 @@ function Shelf(props) {
         }}
       >
         <option name="shelf">Move to...</option>
-        {console.log(current_shelf == "currentlyReading")}
-
         <option value="currentlyReading">Currently Reading</option>
         <option value="wantToRead">Want to Read</option>
         <option value="read">Read</option>
-        <option value="None">None</option>
+        <option value="none">None</option>
       </select>
     </div>
   );
