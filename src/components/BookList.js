@@ -101,7 +101,6 @@ class BookList extends React.Component {
         <div className="open-search">
           <Link
             className="open-search"
-            activeClassName="is-active"
             to="/search"
           />
         </div>

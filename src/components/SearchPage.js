@@ -49,7 +49,6 @@ const SearchPage = (props) => {
       <div className="search-books-bar">
         <Link
           className="close-search"
-          activeClassName="is-active"
           to="/"
         />
         <div className="search-books-input-wrapper">
